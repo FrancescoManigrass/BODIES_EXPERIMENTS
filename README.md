@@ -1,6 +1,6 @@
 # BODIES_EXPERIMENTS
 
-A Python framework for 3D human‐body reconstruction and avatar generation using the SMPL model. This repository bundles data extraction/preprocessing, model training/evaluation, texture mapping, and a simple GUI to capture photos and generate personalized 3D avatars.
+A Python framework for 3D human‐body reconstruction and avatar generation using the SUPR model. This repository bundles data extraction/preprocessing, model training/evaluation, texture mapping, and a simple GUI to capture photos and generate personalized 3D avatars.
 
 ---
 
@@ -9,7 +9,7 @@ A Python framework for 3D human‐body reconstruction and avatar generation usin
 - [Features](#features)  
 - [Repository Structure](#repository-structure)  
 - [Installation](#installation)  
-- [Preparing the SMPL Model](#preparing-the-smpl-model)  
+- [Preparing the SUPR Model](#preparing-the-SUPR-model)  
 - [Usage](#usage)  
   - [1. Data Extraction & Preprocessing](#1-data-extraction--preprocessing)  
   - [2. Model Training](#2-model-training)  
@@ -25,12 +25,12 @@ A Python framework for 3D human‐body reconstruction and avatar generation usin
 
 ## Features
 
-- **Dataset extraction**: Scripts and utilities for building and preprocessing an SMPL‐based body dataset.  
+- **Dataset extraction**: Scripts and utilities for building and preprocessing an SUPR‐based body dataset.  
 - **Model training**: End‐to‐end PyTorch training pipeline (`trainer_full.py`) and configurable loss functions.  
 - **Evaluation**: Quantitative metrics for shape & measurement accuracy (`evaluator.py`, `measurement_evaluator.py`).  
 - **Texture mapping**: Simple pipeline for sampling and applying skin/texture overlays (`texture.py`).  
 - **Interactive GUI**: PySimpleGUI front end (`GUI.py`) to capture front/side photos and generate a 3D avatar.  
-- **SMPL integration**: Utilities to load and preprocess SMPL parameters for mesh reconstruction.  
+- **SUPR integration**: Utilities to load and preprocess SUPR parameters for mesh reconstruction.  
 
 ---
 
@@ -40,7 +40,7 @@ A Python framework for 3D human‐body reconstruction and avatar generation usin
 .
 ├── GUI.py                  # PySimpleGUI app: capture images → generate avatar
 ├── demo.py                 # Example/demo script tying together modules
-├── extract_dataset.py      # Ingest raw images/annotations; export SMPL input data
+├── extract_dataset.py      # Ingest raw images/annotations; export SUPR input data
 ├── trainer_full.py         # Full training pipeline (data loader, model, losses, optimizer)
 ├── evaluator.py            # Compute reconstruction errors vs. ground truth
 ├── measurement_evaluator.py# Evaluate anthropometric measurements (height, limb lengths, etc.)
@@ -48,7 +48,7 @@ A Python framework for 3D human‐body reconstruction and avatar generation usin
 ├── obj_test.py             # Quick sanity checks on .obj exports
 ├── test_full.py            # End‐to‐end pipeline tests
 ├── utils/                  # Utility modules
-│   ├── preprocess_smpl.py  # SMPL‐specific preprocessing (pose & shape parameter handling)
+│   ├── preprocess_SUPR.py  # SUPR‐specific preprocessing (pose & shape parameter handling)
 │   ├── torchloader.py      # PyTorch dataset & DataLoader wrappers
 │   ├── image_utils.py      # Helpers for image I/O, resizing, normalization
 │   ├── model.py            # PyTorch model definitions (encoder, decoder, etc.)
@@ -88,20 +88,20 @@ A Python framework for 3D human‐body reconstruction and avatar generation usin
      scipy \
      trimesh \
      pillow \
-     smplx
+     SUPRx
    ```
    > **Note:** adjust versions as needed for your CUDA/PyTorch setup.
 
 ---
 
-## Preparing the SMPL Model
+## Preparing the SUPR Model
 
-1. Download the [SMPL model files](https://smpl.is.tue.mpg.de/) (e.g. `SMPL_NEUTRAL.pkl`) under a directory of your choice (e.g. `models/smpl`).
-2. In any script that loads SMPL, set the environment variable:
+1. Download the [SUPR model files](https://SUPR.is.tue.mpg.de/) (e.g. `SUPR_NEUTRAL.pkl`) under a directory of your choice (e.g. `models/SUPR`).
+2. In any script that loads SUPR, set the environment variable:
    ```bash
-   export SMPL_MODEL_DIR=/path/to/models/smpl
+   export SUPR_MODEL_DIR=/path/to/models/SUPR
    ```
-   Or modify the path directly in `utils/preprocess_smpl.py`.
+   Or modify the path directly in `utils/preprocess_SUPR.py`.
 
 ---
 
@@ -165,7 +165,7 @@ python texture.py \
 
 - **Paths:** Modify `front_path`, `side_path`, and `icon` in `GUI.py` to point to your desired files.
 - **Hyperparameters:** Tweak learning rate, batch size, loss weights, etc. in `trainer_full.py`.
-- **SMPL settings:** Adjust pose/shape parameter ranges in `utils/preprocess_smpl.py`.
+- **SUPR settings:** Adjust pose/shape parameter ranges in `utils/preprocess_SUPR.py`.
 
 ---
 
