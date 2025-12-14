@@ -202,7 +202,7 @@ If you use the dataset, please cite it as follows:
 ```
 @dataset{cannavo_2025_17912003,
   author       = {Cannavò, Alberto and
-                  MANIGRASSO, FRANCESCO and
+                  Manigrasso, Francesco and
                   Moro, Federica and
                   Lamberti, Fabrizio},
   title        = {BODIES: BOdy shape parameter and 3D meshes of
