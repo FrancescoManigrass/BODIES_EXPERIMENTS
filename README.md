@@ -104,8 +104,33 @@ A Python framework for 3D human‐body reconstruction and avatar generation usin
    Or modify the path directly in `utils/preprocess_SUPR.py`.
 
 ---
+## Pretrained Weights
+
+You can download pretrained checkpoints (model weights) from:
+MEGA: https://mega.nz/folder/6lhATSZQ#opdzw60gYgc_X_4H2BpIxw
+Suggested folder layout:
+
+ ```
+BODIES_EXPERIMENTS/
+  checkpoints/
+    pretrained/
+      <downloaded_files_here>
+
+   ```
+Then, use the downloaded .pth (or equivalent checkpoint) with the evaluation scripts, for example:
+ ```
+python evaluator.py \
+  --checkpoint_path checkpoints/pretrained/<your_checkpoint>.pth \
+  --test_data path/to/preprocessed
+
+
+   ```
+
+---
 
 ## Usage
+
+
 
 ### 1. Data Extraction & Preprocessing
 ```bash
@@ -166,6 +191,31 @@ python texture.py \
 - **Paths:** Modify `front_path`, `side_path`, and `icon` in `GUI.py` to point to your desired files.
 - **Hyperparameters:** Tweak learning rate, batch size, loss weights, etc. in `trainer_full.py`.
 - **SUPR settings:** Adjust pose/shape parameter ranges in `utils/preprocess_SUPR.py`.
+
+---
+
+## Dataset
+
+This architecture was trained using the BODIES dataset (v1.0) published on Zenodo (DOI: 10.5281/zenodo.17912003).
+If you use the dataset, please cite it as follows:
+
+```
+@dataset{cannavo_2025_17912003,
+  author       = {Cannavò, Alberto and
+                  MANIGRASSO, FRANCESCO and
+                  Moro, Federica and
+                  Lamberti, Fabrizio},
+  title        = {BODIES: BOdy shape parameter and 3D meshes of
+                   Individuals basEd on SUPR ( v1.0)
+                  },
+  month        = dec,
+  year         = 2025,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.17912003},
+  url          = {https://doi.org/10.5281/zenodo.17912003},
+}
+
+```
 
 ---
 
